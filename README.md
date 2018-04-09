@@ -2,4 +2,4 @@
 Javascript recap
 
 
-# Creating small JS assignments for a refresher on JS.
+ Creating small JS assignments for a refresher on JS.
