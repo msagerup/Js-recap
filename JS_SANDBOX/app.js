@@ -84,47 +84,47 @@
 // val = firstName.charAt('2');        //g
 
 
-const name = 'John';
-const age = '31';
-const job = 'Web developer';
-const city = 'Oslo';
+// const name = 'John';
+// const age = '31';
+// const job = 'Web developer';
+// const city = 'Oslo';
 
-let html;
- // Without Template strings es5
+// let html;
+//  // Without Template strings es5
 
-html = '<ul><li>Name: ' + name + '</li><li>Age: ' + age + '</li><li>Job: ' + job + '</li><li>City: ' + city + '</li></ul>'
-
-
-// With templateStrings es6. Can use this to f.eks import dynamic data into Tables.
-
-function hello () {
-   return 'hello';
-}
-
-html = `
-   <ul>
-      <li>Name: ${name}</li>
-      <li>Job: ${job}</li>
-      <li>City: ${city}</li>
-      <li>Age: ${age}</li>
-      <li>${2+5}</li>
-      <li>${hello()}</li>
-      <li>${age > 30 ? 'Over 30' : 'Under 30'}</li>
-   </ul>
-`
-
-document.body.innerHTML = html
+// html = '<ul><li>Name: ' + name + '</li><li>Age: ' + age + '</li><li>Job: ' + job + '</li><li>City: ' + city + '</li></ul>'
 
 
-// ARRAYS
+// // With templateStrings es6. Can use this to f.eks import dynamic data into Tables.
+
+// function hello () {
+//    return 'hello';
+// }
+
+// html = `
+//    <ul>
+//       <li>Name: ${name}</li>
+//       <li>Job: ${job}</li>
+//       <li>City: ${city}</li>
+//       <li>Age: ${age}</li>
+//       <li>${2+5}</li>
+//       <li>${hello()}</li>
+//       <li>${age > 30 ? 'Over 30' : 'Under 30'}</li>
+//    </ul>
+// `
+
+// document.body.innerHTML = html
 
 
-const numbers = [43, 456, 3, 5, 7, 7];
-const numbers2 = new Array(22,34,56,78);
-const fruit = ['Appple', 'Bannane', 'Orange'];
-const mixed = [22, 'String', true, undefined, null, {a:1, b:2}, new Date()];
+// // ARRAYS
 
-let val;
+
+// const numbers = [43, 456, 3, 5, 7, 7];
+// const numbers2 = new Array(22,34,56,78);
+// const fruit = ['Appple', 'Bannane', 'Orange'];
+// const mixed = [22, 'String', true, undefined, null, {a:1, b:2}, new Date()];
+
+// let val;
 
 // Get array lenght
 
@@ -169,20 +169,89 @@ let val;
 //    return b - a;
 // })
 
-// Find 
-function under50(num){
-   return num < 40;
-}
+// // Find 
+// function under50(num){
+//    return num < 40;
+// }
 
-val = numbers.find(under50)
-
-
-console.log(numbers)
-console.log(val)
+// val = numbers.find(under50)
 
 
+// console.log(numbers)
+// console.log(val)
 
 
+
+// const person = {
+//    firstName: 'Magnus',
+//    lastName: 'Smith',
+//    age: 37,
+//    email: 'msagerup@kjdf.no',
+//    hobbies: ['music', 'sports'],
+//    address: {
+//       city: 'Sarpsborg',
+//       county: 'Oestfold'
+//    },
+//    getBirthYear: function() {
+//       return 2018 - this.age;
+//    }
+// }
+
+// let val;
+// val = person;
+// // Get spesific value
+// val = person.age;             //30
+// val = person.hobbies[0]       // music
+// val = person.address.city     // Sarpsborg
+// val = person.getBirthYear()   // 1981
+
+// console.log(val)
+
+// // Array of object
+// const people = [
+//    {
+//       name: 'Arne',
+//       age: 35
+//    },
+//    {
+//       name: 'Petter',
+//       age: 55
+//    },
+//    {
+//       name: 'Hans',
+//       age: 84
+//    }
+// ]
+// // Loop trough Object.
+// for(let i = 0; i < people.length; i++) {
+//    console.log(people[i].name)               // Arne, Petter, Hans
+// }
+
+// Time
+
+// let val;
+// const today = new Date();
+// let birthday = new Date('9/10/1981')
+
+// val = today.getMonth();
+// val = today.getDate();
+// val = today.getDay();
+// val = today.getFullYear();
+// val = today.getHours();
+// val = today.getMinutes();
+// val = today.getMilliseconds();
+// val = today.getTime();
+
+// // Change dates
+
+// birthday.setMonth(2);
+// birthday.setDate(22);
+// birthday.setFullYear(1948);
+// birthday.setHours(3);
+// // etc...
+
+// console.log(birthday)
+// console.log(val)
 
 
 
