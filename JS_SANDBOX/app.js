@@ -1,44 +1,87 @@
-// set local storage item
-// localStorage.setItem('name', 'John');
-// localStorage.setItem('age', '30');
+// Define UI Vards
 
-// set session storage item
-// sessionStorage.setItem('name', 'Beth');
+const form = document.querySelector('#task-form');
+const taskList  = document.querySelector('.collection');
+const clearBtn = document.querySelector('.clear-tasks');
+const filter = document.querySelector('#filter');
+const taskInput = document.querySelector('#task');
 
-// remove from storage
-// localStorage.removeItem('name');
+// Load all event listeners
 
-// get from storage
-// const name = localStorage.getItem('name');
-// const age = localStorage.getItem('age');
+loadEventListeners();
 
-// // clear local storage
-// localStorage.clear();
+function loadEventListeners() {
+  // add task event
+  form.addEventListener('submit', addTask);
+  // Remove task event
+  taskList.addEventListener('click', removeTask);
+  // Clear All tasks
+  clearBtn.addEventListener('click', clearTasks);
+  // Filter Tasks
+  filter.addEventListener('keyup', filterTasks);
+}
 
-// console.log(name, age);
+// Add Task
 
-document.querySelector('form').addEventListener('submit', function(e){
-    const task = document.getElementById('task').value;                 // Input field
-  
-    let tasks;                                                          // declare value
-  
-    if(localStorage.getItem('tasks') === null) {                        // if there is nothing in the input field, or entered before , create an array
-      tasks = [];
+function addTask(e) {
+  if(taskInput.value === '') {
+    alert('Add a task');
+  }
+
+  // Create li elemet
+  const li = document.createElement('li');
+  // add Class
+  li.className = 'collection-item';
+  // Create text node and append to the li
+  li.appendChild(document.createTextNode(taskInput.value))
+  // Create new link element
+  const link = document.createElement('a');
+  // Add class
+  link.className = 'delete-item secondary-content';
+  // add icon html
+  link.innerHTML = '<i class="fa fa-remove"></i>'
+  // append the link
+  li.appendChild(link);
+
+  // append the Li to the UL
+  taskList.appendChild(li);
+
+  // Clear input
+  taskInput.value = '';
+  e.preventDefault();
+}
+
+// Remove Task
+function removeTask (e) {
+  if(e.target.parentElement.classList.contains('delete-item')) {
+    e.target.parentElement.parentElement.remove();
+  }
+}
+
+
+// Clear Tasks 
+function clearTasks() {
+  // 2 solutions here 
+  // Either :
+  //taskList.innerHTML = '';
+  // OR this faster option
+  while(taskList.firstChild) {
+    taskList.removeChild(taskList.firstChild)
+  }
+}
+
+
+// Filter tasks 
+function filterTasks (e) {
+  const text = e.target.value.toLowerCase();
+  document.querySelectorAll('.collection-item').forEach
+  (function (task) {
+    const item = task.firstChild.textContent;
+    if(item.toLowerCase().indexOf(text) != -1) {
+      task.style.display = 'block';
     } else {
-      tasks = JSON.parse(localStorage.getItem('tasks'));                // put entry into array tasks with JSON format.
+      task.style.display = 'none';
     }
-  
-    tasks.push(task);                                                   // Push it into array
-  
-    localStorage.setItem('tasks', JSON.stringify(tasks));               // Set it to local storage. 
-  
-    alert('Task saved');
-  
-    e.preventDefault();
-  });
-  
-  const tasks = JSON.parse(localStorage.getItem('tasks'));              // Gets the data from local storage in JSON format.
-  
-  tasks.forEach(function(task){
-    console.log(task);                                                  // Logs all the taks, has to be JSON format to use forEach on this. 
-  });
+  })
+ 
+}
